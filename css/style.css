@@ -24,6 +24,12 @@
   /* Palette « électrique » : jaune/ambre en accent sur fond neutre */
   --jaune: #f5b301;
   --jaune-sombre: #b98600;
+  /* --jaune-sombre est fait pour être un FOND (bouton survolé, texte foncé
+     par-dessus). Utilisé comme COULEUR DE TEXTE sur --fond-doux il ne
+     descend qu'à 2,79:1, sous le minimum de 4,5:1. Cette variante est
+     donc réservée au premier plan : 4,61:1 sur --fond-doux, 5,36:1 sur
+     --fond-carte. Ne pas l'utiliser comme fond. */
+  --jaune-texte: #8b6400;
   --fond: #f4f5f7;
   --fond-carte: #ffffff;
   --fond-doux: #eceef2;
@@ -32,13 +38,13 @@
   --bordure: #d6dae1;
   --bordure-forte: #b6bcc7;
 
-  --vert: #1a7f45;
+  --vert: #197942;
   --vert-fond: #e3f5ea;
   --rouge: #c02a2a;
   --rouge-fond: #fdeaea;
   --bleu: #1d5fb5;
   --bleu-fond: #e8f0fc;
-  --orange: #a85a00;
+  --orange: #a05600;
   --orange-fond: #fdf1e0;
   --violet: #6b3fa0;
 
@@ -62,6 +68,7 @@
 :root[data-theme="sombre"] {
   --jaune: #ffc93c;
   --jaune-sombre: #ffdd7a;
+  --jaune-texte: #ffdd7a;
   --fond: #14161b;
   --fond-carte: #1d2027;
   --fond-doux: #262a33;
@@ -290,10 +297,18 @@ code, .valeur {
   cursor: pointer;
   white-space: nowrap;
 }
-#entete-niveau { color: var(--jaune-sombre); }
+#entete-niveau { color: var(--jaune-texte); }
 :root[data-theme="sombre"] #entete-niveau { color: var(--jaune); }
 #entete-serie { color: var(--orange); }
-.entete__jeton--eteint { color: var(--texte-doux); opacity: .65; }
+/* État « éteint » (série à zéro) : on change la COULEUR, plus l'opacité.
+   Avec un opacity < 1, n'importe quelle teinte de texte descend sous le
+   minimum de 4,5:1 sur --fond-doux (0,85 ne donne que 3,88:1). De plus
+   #entete-serie est un sélecteur par id, donc plus spécifique que cette
+   classe : sans ce second sélecteur, la couleur orange l'emporterait et
+   l'opacité serait le seul signal — c'est-à-dire l'illisible. */
+.entete__jeton--eteint { color: var(--texte-doux); }
+#entete-niveau.entete__jeton--eteint,
+#entete-serie.entete__jeton--eteint { color: var(--texte-doux); }
 
 .btn-theme {
   display: inline-flex; align-items: center; gap: .4em;
@@ -354,7 +369,7 @@ code, .valeur {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.modes__btn.actif { color: var(--jaune-sombre); background: var(--fond-doux); }
+.modes__btn.actif { color: var(--jaune-texte); background: var(--fond-doux); }
 :root[data-theme="sombre"] .modes__btn.actif { color: var(--jaune); }
 .modes__btn.actif::before {
   content: "";
@@ -475,7 +490,7 @@ code, .valeur {
   flex: 0 0 auto;
   width: 44px; height: 44px;
   display: grid; place-items: center;
-  color: var(--jaune-sombre);
+  color: var(--jaune-texte);
   background: var(--fond-doux);
   border-radius: 12px;
 }
@@ -502,7 +517,7 @@ code, .valeur {
 }
 .stat__valeur {
   display: block; font-size: 1.35rem; font-weight: 750; line-height: 1.2;
-  color: var(--jaune-sombre);
+  color: var(--jaune-texte);
 }
 :root[data-theme="sombre"] .stat__valeur { color: var(--jaune); }
 .stat__label { font-size: .76rem; color: var(--texte-doux); }
@@ -517,11 +532,12 @@ code, .valeur {
   border: 1px solid var(--bordure);
   border-radius: var(--rayon-petit);
   color: var(--texte-doux);
-  opacity: .6;
+  background: var(--fond-carte);
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon-petit);
 }
 .badge-vignette--obtenu {
-  opacity: 1;
-  color: var(--jaune-sombre);
+  color: var(--jaune-texte);
   border-color: var(--jaune);
   background: linear-gradient(160deg, var(--fond-carte), var(--fond-doux));
 }
@@ -617,7 +633,7 @@ code, .valeur {
   flex: 0 0 auto;
   width: 42px; height: 42px;
   display: grid; place-items: center;
-  color: var(--jaune-sombre);
+  color: var(--jaune-texte);
   background: var(--fond-doux);
   border-radius: 12px;
 }
@@ -1085,7 +1101,7 @@ select.fausse { border-color: var(--rouge); background: var(--rouge-fond); }
   animation: glisserHaut .28s ease both;
 }
 .notif--sortie { animation: glisserBas .5s ease both; }
-.notif__icone { flex: 0 0 auto; display: inline-flex; color: var(--jaune-sombre); }
+.notif__icone { flex: 0 0 auto; display: inline-flex; color: var(--jaune-texte); }
 :root[data-theme="sombre"] .notif__icone { color: var(--jaune); }
 .notif__texte { display: flex; flex-direction: column; line-height: 1.3; min-width: 0; }
 .notif__texte strong { font-size: .95rem; }

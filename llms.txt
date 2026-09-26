@@ -1,0 +1,58 @@
+# Habilitation Électrique B1V / B2V / BR — révision
+
+> Application de révision gratuite et hors ligne pour préparer l'habilitation
+> électrique B1V, B2V et BR selon la norme NF C18-510. En français, sans compte,
+> sans installation, fonctionne sans connexion.
+
+Web app statique (HTML, CSS et JavaScript sans framework ni dépendance). Elle se
+construit entièrement dans le navigateur : le contenu de la page est injecté par
+`js/app.js` au chargement, et un résumé textuel de secours est présent dans le
+HTML servi pour les lecteurs d'écran et les robots.
+
+## Contenu
+
+- [10 fiches de révision](https://b1v-b2v-br.netlify.app/) — les dangers de
+  l'électricité, les domaines de tension, les symboles d'habilitation, les zones
+  d'environnement et le voisinage, la consignation et la déconsignation, les
+  protections individuelles et collectives, les interventions BR, accident et
+  incendie d'origine électrique, les documents, l'évaluation.
+- [134 questions d'entraînement](https://b1v-b2v-br.netlify.app/) — 7 types
+  d'exercices : QCM à une ou plusieurs réponses, vrai/faux, remise en ordre,
+  association, texte à trous, et mise en situation. Chaque question est suivie
+  d'une explication.
+- [Examen blanc](https://b1v-b2v-br.netlify.app/) — 20 questions en 30 minutes,
+  seuil de réussite à 70 %. Les règles d'évaluation sont celles de la brochure
+  INRS ED 6127, qui accompagne la norme NF C18-510. Un format long de 30
+  questions en 45 minutes est également disponible.
+- [Cartes mémo](https://b1v-b2v-br.netlify.app/) — 20 cartes par session,
+  réponse « je sais / à revoir ».
+- [Révision espacée](https://b1v-b2v-br.netlify.app/) — chaque question revient
+  juste avant d'être oubliée ; suivi des niveaux, de la série de jours et des
+  erreurs.
+
+## À propos de l'habilitation électrique
+
+L'habilitation électrique est une aptitude à intervenir sur des installations
+électriques en toute sécurité. Elle est délivrée par l'employeur, après une
+formation dispensée par un organisme habilité et une évaluation. Les symboles
+indiquent le type d'intervention autorisé et le domaine de tension concerné :
+
+- **B1V** — exécution d'opérations de deuxième catégorie en basse tension.
+- **B2V** — travaux de deuxième catégorie en basse tension, avec supervision.
+- **BR** — interventions de proximité sur les installations basse tension :
+  manipulation, mesure, remplacement, hors parties sous tension.
+
+## Limites
+
+Outil de révision personnel. Il ne remplace ni la norme NF C18-510, ni la
+brochure INRS ED 6127, ni la formation d'un organisme habilité, ni le titre
+délivré par l'employeur. La norme NF C18-510 et ses amendements font foi.
+
+## Voir aussi
+
+- La norme NF C18-510 et ses amendements, publiée par l'AFNOR — c'est la
+  référence opposable, et la seule source à jour en cas d'écart avec cette page.
+- La brochure INRS ED 6127, « Habilitation électrique : mode d'emploi », qui
+  détaille les règles d'évaluation reprises par l'examen blanc.
+- Le site d'un organisme de formation habilité, pour la formation
+  réglementaire qui, seule, délivre les Savoir-Faire.

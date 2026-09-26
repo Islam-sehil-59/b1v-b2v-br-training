@@ -413,6 +413,10 @@ function rafraichirIndicateursEntete() {
       h("span", {}, "Niv. " + infos.niveau)
     ]);
     zoneNiveau.title = infos.titre + " — " + p.xp + " XP";
+    // L'aria-label reprend le texte visible (« Niv. 1 ») puis complète.
+    // WCAG 2.5.3 « Label in Name » : le nom accessible doit contenir le
+    // libellé visible, sinon la commande vocale « cliquer Niv. 1 » échoue.
+    zoneNiveau.setAttribute("aria-label", "Niv. " + infos.niveau + " : mon niveau et mes succès");
   }
   const zoneSerie = document.getElementById("entete-serie");
   if (zoneSerie) {
@@ -423,6 +427,11 @@ function rafraichirIndicateursEntete() {
     zoneSerie.title = jours > 0
       ? "Série de " + jours + " jour(s) — record : " + (p.serie.record || 0)
       : "Aucune série en cours. Réponds à une question pour la démarrer.";
+    // Même règle que pour le niveau : le nombre affiché doit figurer dans
+    // le nom accessible, sinon on annonce « 0 » et le nom dit « série ».
+    zoneSerie.setAttribute("aria-label",
+      jours + (jours > 1 ? " jours" : " jour") + " de série consécutifs"
+      + (p.serie.record ? ", record " + p.serie.record : ""));
   }
   const badge = document.getElementById("badge-erreurs");
   if (badge) {
@@ -596,7 +605,14 @@ function carteChapitre(chapitre, options) {
   return h("button", {
     class: "chapitre" + (pourcent === 100 ? " chapitre--termine" : ""),
     type: "button",
-    "aria-label": "Chapitre " + numero + " : " + chapitre.titre + ", progression " + pourcent + " %",
+    // Pas d'aria-label ici, volontairement. Un libellé inventé qui ne
+    // reprend pas mot pour mot le texte visible viole le critère WCAG
+    // 2.5.3 « Label in Name » (critère 2.5.3 de l'audit axe), et le
+    // lecteur d'écran annonçait « Chapitre 2 : … » pendant que l'œil
+    // lisait « 2. … ». Sans aria-label, le nom accessible est calculé
+    // depuis le contenu : il est par construction identique au texte
+    // visible, et la progression reste annoncée par la barre, qui porte
+    // sa propre étiquette.
     onclick: reglages.action || (() => naviguer("fiches", { chapitre: chapitre.id }))
   },
     h("div", { class: "chapitre__haut" },

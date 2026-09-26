@@ -9,7 +9,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Révision Habilitation Électrique B1V / B2V / BR</title>
-  <meta name="description" content="Application de révision hors ligne pour l'habilitation électrique B1V, B2V et BR (NF C18-510) : fiches, cartes mémo à balayer, examen blanc aux règles officielles.">
+  <meta name="description" content="Révision gratuite de l'habilitation électrique B1V, B2V et BR (NF C18-510) : 134 questions, 10 fiches, examen blanc et révision espacée, hors ligne.">
   <link rel="stylesheet" href="css/style.css">
 
   <!-- ==================== Référencement ====================
@@ -24,12 +24,17 @@
   <!-- ==================== Partage sur les réseaux sociaux ====================
        og:* est lu par Facebook, LinkedIn, WhatsApp, Discord…
        twitter:* sert de repli quand og:image est ignorée.
-       og-carte.jpg fait 1200x630, format attendu par ces plateformes. -->
+       og-carte.jpg fait 1200x630, format attendu par ces plateformes.
+
+       Les trois descriptions reprennent le texte de <meta name="description">
+       : un seul message à maintenir, et le même dans les résultats de
+       recherche et sur un partage. 148 caractères, sous la limite de
+       troncature de Google (environ 155). -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="Habilitation Électrique B1V B2V BR">
   <meta property="og:title" content="Révision Habilitation Électrique B1V / B2V / BR">
-  <meta property="og:description" content="Révision hors ligne de l'habilitation électrique B1V, B2V et BR (NF C18-510) : 134 questions, 10 fiches, examen blanc et révision espacée.">
+  <meta property="og:description" content="Révision gratuite de l'habilitation électrique B1V, B2V et BR (NF C18-510) : 134 questions, 10 fiches, examen blanc et révision espacée, hors ligne.">
   <meta property="og:url" content="https://b1v-b2v-br.netlify.app/">
   <meta property="og:image" content="https://b1v-b2v-br.netlify.app/og-carte.jpg">
   <meta property="og:image:width" content="1200">
@@ -37,7 +42,7 @@
   <meta property="og:image:alt" content="Habilitation électrique B1V, B2V et BR — révision NF C18-510.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Révision Habilitation Électrique B1V / B2V / BR">
-  <meta name="twitter:description" content="134 questions, examen blanc et révision espacée pour l'habilitation électrique B1V, B2V et BR (NF C18-510).">
+  <meta name="twitter:description" content="Révision gratuite de l'habilitation électrique B1V, B2V et BR (NF C18-510) : 134 questions, 10 fiches, examen blanc et révision espacée, hors ligne.">
   <meta name="twitter:image" content="https://b1v-b2v-br.netlify.app/og-carte.jpg">
 
   <!-- ==================== Données structurées ====================
@@ -103,8 +108,8 @@
 
       <div class="entete__droite">
         <!-- Indicateurs permanents : niveau et série de jours -->
-        <button class="entete__jeton" id="entete-niveau" type="button" aria-label="Mon niveau et mes succès"></button>
-        <button class="entete__jeton" id="entete-serie" type="button" aria-label="Ma série de jours consécutifs"></button>
+        <button class="entete__jeton" id="entete-niveau" type="button" aria-label="Niveau et succès"></button>
+        <button class="entete__jeton" id="entete-serie" type="button" aria-label="Série de jours consécutifs"></button>
 
         <button class="btn-theme" id="btn-theme" type="button" aria-label="Basculer entre le thème clair et sombre">
           <span id="icone-theme" data-icone="moon" data-taille="18"></span>
@@ -218,10 +223,10 @@
     <p class="pied__note">Règles d'évaluation reprises de la brochure INRS ED 6127. Les encadrés « À vérifier avec le formateur » signalent ce qui reste à confirmer en cours.</p>
   </footer>
 
-  <script src="js/icones.js"></script>
-  <script src="js/gestes.js"></script>
-  <script src="js/data.js"></script>
-  <script src="js/jeu.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/icones.js" defer></script>
+  <script src="js/gestes.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/jeu.js" defer></script>
+  <script src="js/app.js" defer></script>
 </body>
 </html>
