@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="clair">
+<head>
+  <meta charset="UTF-8">
+  <!-- viewport-fit=cover : on gère nous-mêmes les encoches des téléphones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#f5b301">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Révision Habilitation Électrique B1V / B2V / BR</title>
+  <meta name="description" content="Application de révision hors ligne pour l'habilitation électrique B1V, B2V et BR (NF C18-510) : fiches, cartes mémo à balayer, examen blanc aux règles officielles.">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Icône de l'onglet : le même éclair que l'icône « zap », en SVG -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f5b301' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='13 2 3 14 12 14 11 22 21 10 12 10 13 2'/></svg>">
+</head>
+<body>
+
+  <!-- ==================== EN-TÊTE ==================== -->
+  <header class="entete">
+    <div class="entete__contenu">
+      <button class="logo" id="btn-accueil" type="button" title="Retour à l'accueil">
+        <span class="logo__eclair" data-icone="zap" data-taille="24"></span>
+        <span class="logo__texte">
+          <strong>Habilitation Électrique</strong>
+          <small>B1V &middot; B2V &middot; BR — NF C18-510</small>
+        </span>
+      </button>
+
+      <div class="entete__droite">
+        <!-- Indicateurs permanents : niveau et série de jours -->
+        <button class="entete__jeton" id="entete-niveau" type="button" aria-label="Mon niveau et mes succès"></button>
+        <button class="entete__jeton" id="entete-serie" type="button" aria-label="Ma série de jours consécutifs"></button>
+
+        <button class="btn-theme" id="btn-theme" type="button" aria-label="Basculer entre le thème clair et sombre">
+          <span id="icone-theme" data-icone="moon" data-taille="18"></span>
+          <span class="btn-theme__label" id="label-theme">Sombre</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== CONTENU ==================== -->
+  <main id="vue" class="vue" tabindex="-1">
+    <!-- Rempli dynamiquement par js/app.js -->
+  </main>
+
+  <!--
+    Navigation des modes. Un seul balisage pour deux présentations :
+    des onglets en haut sur grand écran, une barre fixe en bas du pouce
+    sur téléphone (voir la section « responsive » de css/style.css).
+  -->
+  <nav class="modes" aria-label="Modes de révision">
+    <button class="modes__btn actif" data-mode="accueil" type="button">
+      <span data-icone="home" data-taille="20"></span><span class="modes__label">Accueil</span>
+    </button>
+    <button class="modes__btn" data-mode="fiches" type="button">
+      <span data-icone="book" data-taille="20"></span><span class="modes__label">Fiches</span>
+    </button>
+    <button class="modes__btn" data-mode="cartes" type="button">
+      <span data-icone="layers" data-taille="20"></span><span class="modes__label">Cartes</span>
+    </button>
+    <button class="modes__btn" data-mode="entrainement" type="button">
+      <span data-icone="target" data-taille="20"></span><span class="modes__label">Entraînement</span>
+      <span class="badge" id="badge-erreurs" hidden>0</span>
+    </button>
+    <button class="modes__btn" data-mode="examen" type="button">
+      <span data-icone="clipboard" data-taille="20"></span><span class="modes__label">Examen</span>
+    </button>
+  </nav>
+
+  <!-- Zone d'annonce pour les lecteurs d'écran -->
+  <div id="annonce" class="sr-only" role="status" aria-live="polite"></div>
+
+  <footer class="pied">
+    <p>Outil de révision personnel — ne remplace ni la norme <strong>NF C18-510</strong>, ni la formation d'un organisme habilité, ni le titre délivré par l'employeur.</p>
+    <p class="pied__note">Règles d'évaluation reprises de la brochure INRS ED 6127. Les encadrés « À vérifier avec le formateur » signalent ce qui reste à confirmer en cours.</p>
+  </footer>
+
+  <script src="js/icones.js"></script>
+  <script src="js/gestes.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/jeu.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

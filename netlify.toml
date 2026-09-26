@@ -1,0 +1,71 @@
+# ==========================================================================
+# Configuration Netlify
+# Site entièrement statique : aucune dépendance, aucune étape de build.
+# Netlify sert les fichiers du dépôt tels quels.
+# ==========================================================================
+
+[build]
+  # La racine du dépôt EST le site : index.html est à la racine.
+  publish = "."
+  # Pas de commande de build : rien à compiler, rien à installer.
+  command = ""
+
+# --------------------------------------------------------------------------
+# EN-TÊTES DE CACHE
+#
+# Attention : index.html référence css/style.css et js/*.js par leur nom, SANS
+# empreinte (pas de style.a1b2c3.css). Un cache long servirait donc d'anciens
+# fichiers après une mise à jour, avec un mélange de versions incohérent.
+#
+# On demande donc au navigateur de REVALIDER à chaque visite : il envoie un
+# ETag, et Netlify répond « 304 Not Modified » si rien n'a changé. Le transfert
+# reste quasi nul, mais une mise en ligne est visible immédiatement.
+#
+# Si un jour les fichiers sont renommés avec une empreinte, on pourra passer
+# css/ et js/ à « public, max-age=31536000, immutable ».
+# --------------------------------------------------------------------------
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # --- Sécurité ---
+    # Empêche le navigateur de « devenir » le type MIME annoncé.
+    X-Content-Type-Options = "nosniff"
+    # Interdit l'affichage du site dans une iframe d'un autre domaine.
+    X-Frame-Options = "DENY"
+    # Ne transmet pas l'URL complète aux sites tiers.
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    # L'application n'a besoin d'aucune API sensible : on les refuse toutes.
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=(), usb=()"
+    # Politique de sécurité du contenu : tout vient de ce domaine, rien de l'extérieur.
+    #   script-src 'self'            → uniquement les fichiers js/ du projet
+    #   style-src  'unsafe-inline'   → nécessaire : l'application pose quelques
+    #                                  attributs style="..." depuis JavaScript
+    #   img-src    data:             → nécessaire : l'icône d'onglet est un SVG en data:
+    #   connect-src 'none'           → l'application ne fait AUCUNE requête réseau
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# --------------------------------------------------------------------------
+# PAS DE REDIRECTION « /* vers /index.html »
+#
+# On pourrait être tenté d'en ajouter une, comme pour une application à page
+# unique. C'est inutile ici : la navigation entre les modes se fait en mémoire,
+# sans jamais changer l'URL. Ajouter cette règle masquerait au contraire les
+# vraies erreurs 404 (un fichier mal nommé renverrait la page d'accueil au lieu
+# de signaler le problème).
+# --------------------------------------------------------------------------

@@ -1,0 +1,44 @@
+# ==========================================================================
+# Fichiers à ne jamais envoyer sur GitHub
+# Ce projet est volontairement sans dépendance ni étape de build : il n'y a
+# donc presque rien à ignorer. Les entrées ci-dessous couvrent les fichiers
+# que le système d'exploitation, les éditeurs et les outils ajoutent tout seuls.
+# ==========================================================================
+
+# --- Système d'exploitation ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+desktop.ini
+
+# --- Éditeurs ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.*.kate-swp
+\#*\#
+
+# --- Outils Netlify et déploiement ---
+.netlify/
+
+# --- Au cas où un outil Node serait ajouté plus tard ---
+node_modules/
+package-lock.json
+npm-debug.log*
+yarn-error.log*
+
+# --- Secrets : ne doivent jamais partir, même par accident ---
+.env
+.env.*
+*.pem
+*.key
+
+# --- Divers ---
+*.log
+*.tmp
+.cache/
