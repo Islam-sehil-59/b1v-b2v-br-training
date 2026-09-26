@@ -11,6 +11,80 @@
   <title>Révision Habilitation Électrique B1V / B2V / BR</title>
   <meta name="description" content="Application de révision hors ligne pour l'habilitation électrique B1V, B2V et BR (NF C18-510) : fiches, cartes mémo à balayer, examen blanc aux règles officielles.">
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- ==================== Référencement ====================
+       canonical : évite que le même contenu soit réparti sur plusieurs
+       URL (avec ou sans www, avec paramètres de partage, etc.). -->
+  <link rel="canonical" href="https://b1v-b2v-br.netlify.app/">
+
+  <!-- Indexation explicite. C'est aussi le défaut, mais l'écrire
+       évite qu'un réglage ultérieur ne désactive la page par accident. -->
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <!-- ==================== Partage sur les réseaux sociaux ====================
+       og:* est lu par Facebook, LinkedIn, WhatsApp, Discord…
+       twitter:* sert de repli quand og:image est ignorée.
+       og-carte.jpg fait 1200x630, format attendu par ces plateformes. -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Habilitation Électrique B1V B2V BR">
+  <meta property="og:title" content="Révision Habilitation Électrique B1V / B2V / BR">
+  <meta property="og:description" content="Révision hors ligne de l'habilitation électrique B1V, B2V et BR (NF C18-510) : 134 questions, 10 fiches, examen blanc et révision espacée.">
+  <meta property="og:url" content="https://b1v-b2v-br.netlify.app/">
+  <meta property="og:image" content="https://b1v-b2v-br.netlify.app/og-carte.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Habilitation électrique B1V, B2V et BR — révision NF C18-510.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Révision Habilitation Électrique B1V / B2V / BR">
+  <meta name="twitter:description" content="134 questions, examen blanc et révision espacée pour l'habilitation électrique B1V, B2V et BR (NF C18-510).">
+  <meta name="twitter:image" content="https://b1v-b2v-br.netlify.app/og-carte.jpg">
+
+  <!-- ==================== Données structurées ====================
+       Ce bloc est une donnée, pas un script exécuté : il n'est donc
+       pas concerné par la directive script-src de la CSP (voir
+       netlify.toml), et fonctionne sans configuration supplémentaire.
+       Le format attendu par Google est le JSON-LD en @graph. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://b1v-b2v-br.netlify.app/#site",
+        "url": "https://b1v-b2v-br.netlify.app/",
+        "name": "Habilitation Électrique B1V B2V BR",
+        "inLanguage": "fr-FR",
+        "description": "Application de révision hors ligne de l'habilitation électrique B1V, B2V et BR selon la norme NF C18-510."
+      },
+      {
+        "@type": "MobileApplication",
+        "@id": "https://b1v-b2v-br.netlify.app/#app",
+        "name": "Révision Habilitation Électrique B1V / B2V / BR",
+        "url": "https://b1v-b2v-br.netlify.app/",
+        "inLanguage": "fr-FR",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Android, iOS, Web",
+        "browserRequirements": "Navigateur avec JavaScript",
+        "isAccessibleForFree": true,
+        "description": "Application de révision de l'habilitation électrique B1V, B2V et BR (NF C18-510) : 10 fiches de révision, 134 questions, 7 types d'exercices, examen blanc aux règles de l'INRS ED 6127 et révision espacée. Fonctionne hors ligne.",
+        "image": "https://b1v-b2v-br.netlify.app/og-carte.jpg",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        },
+        "educationalLevel": "Formation professionnelle en habilitation électrique",
+        "about": {
+          "@type": "Thing",
+          "name": "Habilitation électrique B1V, B2V, BR",
+          "description": "Norme NF C18-510"
+        }
+      }
+    ]
+  }
+  </script>
+
   <!-- Icône de l'onglet : le même éclair que l'icône « zap », en SVG -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f5b301' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='13 2 3 14 12 14 11 22 21 10 12 10 13 2'/></svg>">
 </head>
@@ -42,6 +116,73 @@
 
   <!-- ==================== CONTENU ==================== -->
   <main id="vue" class="vue" tabindex="-1">
+
+    <!--
+      Contenu de repli, présent DANS le HTML servi.
+
+      Pourquoi : l'application se construit entièrement en JavaScript, donc
+      sans ce bloc un moteur de recherche recevrait une page vide — ni titre,
+      ni texte, ni liens. C'est le principal obstacle au référencement d'une
+      application de ce type.
+
+      Ce bloc est remplacé au premier rendu par js/app.js (voir vider() dans
+      app.js), donc l'utilisateur ne le voit pas et rien n'est dupliqué. Il
+      reste visible si JavaScript est désactivé ou échoue au chargement, ce
+      qui laisse un contenu réel plutôt qu'une page blanche.
+    -->
+    <article class="repli">
+      <h1>Révision Habilitation Électrique B1V, B2V et BR — NF C18-510</h1>
+
+      <p class="repli__chapo">
+        Application de révision <strong>gratuite et hors ligne</strong> pour préparer
+        l'habilitation électrique <strong>B1V, B2V et BR</strong> selon la norme
+        <strong>NF C18-510</strong> : fiches de révision, cartes mémo, questions
+        d'entraînement et examen blanc dans les conditions de l'examen officiel.
+      </p>
+
+      <h2>Les 10 fiches de révision</h2>
+      <ol class="repli__liste">
+        <li>Les dangers de l'électricité</li>
+        <li>Les domaines de tension</li>
+        <li>Les symboles d'habilitation</li>
+        <li>Les zones d'environnement et le voisinage</li>
+        <li>La consignation et la déconsignation</li>
+        <li>Les protections individuelles et collectives</li>
+        <li>Les interventions BR</li>
+        <li>Accident et incendie d'origine électrique</li>
+        <li>Les documents</li>
+        <li>Comment se passe l'évaluation</li>
+      </ol>
+
+      <h2>Ce que contient l'application</h2>
+      <ul class="repli__liste">
+        <li><strong>134 questions</strong> réparties en 7 types d'exercices</li>
+        <li><strong>Examen blanc</strong> de 20 questions en 30 minutes, seuil de
+          réussite à 70 % — les règles de la brochure INRS ED 6127</li>
+        <li><strong>Révision espacée</strong> : chaque question revient juste avant
+          que vous ne loubliiez</li>
+        <li><strong>Suivi de progression</strong> : niveaux, série de jours, objectif
+          quotidien et historique de vos erreurs</li>
+        <li><strong>Fonctionne hors ligne</strong>, sans compte ni installation</li>
+      </ul>
+
+      <h2>À qui s'adresse cette application ?</h2>
+      <p>
+        Aux techniciens et non-électriciens qui préparent une habilitation
+        <strong>B1V</strong> (exécution d'opérations de deuxième catégorie en basse
+        tension), <strong>B2V</strong> (supervision) ou <strong>BR</strong>
+        (interventions de proximité sur les installations basse tension). Elle
+        accompagne, sans le remplacer, la formation dispensée par un organisme
+        habilité et l'évaluation de l'employeur.
+      </p>
+
+      <p class="repli__note">
+        Outil de révision personnel : il ne remplace ni la norme NF C18-510, ni la
+        brochure INRS ED 6127, ni la formation d'un organisme habilité, ni le titre
+        délivré par l'employeur.
+      </p>
+    </article>
+
     <!-- Rempli dynamiquement par js/app.js -->
   </main>
 

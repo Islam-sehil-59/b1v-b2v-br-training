@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Plan du site : une seule page, l'application étant entièrement
+  construite en JavaScript dans index.html.
+
+  lastmod = date de la dernière modification du contenu, à mettre à jour
+  à chaque déploiement qui change le contenu (pas à chaque commit).
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://b1v-b2v-br.netlify.app/</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

@@ -1246,3 +1246,44 @@ h1 > .icone, h2 > .icone { margin-right: .3em; vertical-align: -0.14em; }
 @media (min-width: 1000px) {
   .tuiles { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* ==========================================================================
+   Contenu de repli pour les moteurs de recherche
+   --------------------------------------------------------------------------
+   Ce bloc vit dans index.html et n'est visible que si JavaScript est
+   désactivé ou échoue. Il reprend les mêmes couleurs et le même rayon que
+   le reste de l'application (variables en haut de fichier).
+   ========================================================================== */
+.repli {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.4rem 1.2rem 2.4rem;
+  background: var(--fond-carte);
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  box-shadow: var(--ombre);
+  line-height: 1.65;
+}
+.repli h1 { font-size: 1.5rem; line-height: 1.3; margin: 0 0 .8rem; }
+.repli h2 {
+  font-size: 1.1rem;
+  margin: 1.8rem 0 .6rem;
+  padding-top: .9rem;
+  border-top: 1px solid var(--bordure);
+}
+.repli__chapo { color: var(--texte); margin: 0 0 .4rem; }
+.repli__liste { margin: 0; padding-left: 1.3rem; }
+.repli__liste li { margin-bottom: .35rem; }
+.repli__note {
+  margin: 1.8rem 0 0;
+  padding-top: .9rem;
+  border-top: 1px solid var(--bordure);
+  font-size: .85rem;
+  color: var(--texte-doux);
+}
+
+/* Pas de carte flottante ni d'ombre sur les petits écrans. */
+@media (max-width: 560px) {
+  .repli { padding: 1.1rem .95rem 1.8rem; box-shadow: none; }
+  .repli h1 { font-size: 1.3rem; }
+}

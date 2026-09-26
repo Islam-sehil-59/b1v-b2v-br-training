@@ -1,0 +1,25 @@
+# ==========================================================================
+# robots.txt — https://b1v-b2v-br.netlify.app/
+#
+# À lire avant de modifier : ce fichier ne sert PAS à améliorer le
+# classement dans Google. Il donne seulement des instructions aux
+# robots d'exploration (Googlebot, Bingbot, ...).
+#
+# Un fichier robots.txt n'accorde aucun privilège : les pages qu'il
+# autorise restent indexables ou non selon leur contenu, leurs balises
+# <meta name="robots"> et surtout les liens externes reçus.
+#
+# Le référencement se joue ailleurs :
+#   1. le texte réellement présent dans le HTML servi (voir <noscript>
+#      et le <h1> dans index.html) ;
+#   2. les liens entrants depuis d'autres sites ;
+#   3. la vitesse et le rendu sur mobile.
+# ==========================================================================
+
+User-agent: *
+Allow: /
+
+# Aucun chemin n'est interdit : toute l'application est publique et
+# sans donnée personnelle (la progression vit dans le navigateur).
+
+Sitemap: https://b1v-b2v-br.netlify.app/sitemap.xml

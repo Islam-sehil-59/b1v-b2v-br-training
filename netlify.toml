@@ -61,6 +61,31 @@
     Cache-Control = "public, max-age=0, must-revalidate"
 
 # --------------------------------------------------------------------------
+# FICHIERS DE RÉFÉRENCEMENT
+#
+# Mêmes fichiers sans empreinte que ci-dessus, donc même décision : on
+# revalide plutôt que de servir une version périmée. robots.txt et
+# sitemap.xml n'ont aucun intérêt à être mis en cache long (une
+# modification mettrait des jours à se voir), et og-carte.jpg non plus
+# tant qu'il ne porte pas d'empreinte dans son nom.
+# --------------------------------------------------------------------------
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/og-carte.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# --------------------------------------------------------------------------
 # PAS DE REDIRECTION « /* vers /index.html »
 #
 # On pourrait être tenté d'en ajouter une, comme pour une application à page
