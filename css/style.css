@@ -1226,10 +1226,18 @@ h1 > .icone, h2 > .icone { margin-right: .3em; vertical-align: -0.14em; }
   .entete::after { content: none; }
   body { display: flex; flex-direction: column; min-height: 100vh; }
   .entete { order: 1; }
-  .modes { order: 2; position: sticky; top: 0; z-index: 19; background: var(--fond-carte);
-           border-bottom: 1px solid var(--bordure); padding-top: 6px; }
   .vue { order: 3; flex: 1 0 auto; }
   .pied { order: 4; padding-bottom: 28px; }
+
+  /* Les deux barres sont collantes, mais l'en-tête (z-index 20) est
+     AU-DESSUS de la barre de modes (19). Avec top: 0 sur les deux, dès
+     le premier pixel de défilement la barre de modes remontait sous
+     l'en-tête et disparaissait : on ne pouvait plus changer de mode
+     sans remonter en haut de page. Elle se colle donc SOUS l'en-tête,
+     à sa hauteur mesurée (--hauteur-entete, posée par app.js ; la
+     valeur ci-dessous n'est qu'un repli si JavaScript est absent). */
+  .modes { order: 2; position: sticky; top: var(--hauteur-entete, 57px); z-index: 19;
+           background: var(--fond-carte); border-bottom: 1px solid var(--bordure); padding-top: 6px; }
 
   .modes__btn {
     flex: 0 0 auto;

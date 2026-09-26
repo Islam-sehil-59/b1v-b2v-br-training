@@ -2271,6 +2271,32 @@ function vueSucces() {
    14. DÉMARRAGE
    ========================================================================== */
 
+/**
+ * Mesure la hauteur réelle de l'en-tête et la publie dans la variable
+ * CSS --hauteur-entete.
+ *
+ * Sur grand écran, l'en-tête et la barre de modes sont tous deux collants.
+ * La barre de modes doit se coller SOUS l'en-tête, donc à sa hauteur : une
+ * valeur en dur (57px) serait fausse dès que le logo passe à la ligne ou
+ * que la taille de police change. On mesure donc pour de vrai, et on
+ * remesure au redimensionnement.
+ */
+function mesurerEntete() {
+  const entete = document.querySelector(".entete");
+  if (!entete) return;
+  const poser = () => {
+    // getBoundingClientRect() plutôt que offsetHeight : la hauteur inclut
+    // la zone sûre de l'iPhone (padding-top: env(safe-area-inset-top)).
+    const h = Math.round(entete.getBoundingClientRect().height);
+    if (h > 0) document.documentElement.style.setProperty("--hauteur-entete", h + "px");
+  };
+  poser();
+  window.addEventListener("resize", poser);
+  // Le logo contient une police système : sa hauteur peut changer une fois
+  // la police réellement chargée, après le premier rendu.
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(poser).catch(() => {});
+}
+
 /** Raccourcis clavier : chiffres pour choisir une option, Entrée pour valider. */
 function installerRaccourcisClavier() {
   document.addEventListener("keydown", (ev) => {
@@ -2325,6 +2351,7 @@ function demarrer() {
   });
 
   installerRaccourcisClavier();
+  mesurerEntete();
   naviguer("accueil");
 }
 

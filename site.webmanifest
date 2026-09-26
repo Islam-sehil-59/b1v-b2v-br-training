@@ -1,0 +1,34 @@
+{
+  "name": "Habilitation Électrique B1V B2V BR",
+  "short_name": "Habilitation",
+  "description": "Révision hors ligne de l'habilitation électrique B1V, B2V et BR (NF C18-510) : 134 questions, 10 fiches, examen blanc et révision espacée.",
+  "lang": "fr-FR",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "id": "/",
+  "display": "standalone",
+  "background_color": "#14161b",
+  "theme_color": "#f5b301",
+  "categories": ["education", "books"],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
